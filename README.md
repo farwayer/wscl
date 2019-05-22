@@ -2,7 +2,7 @@
 
 Simple browser WebSocket wrapper with some extra features:
 
-- auto reconnect
+- auto reconnect with x2 time strategy
 - wait connection before sending message
 
 ## How to use

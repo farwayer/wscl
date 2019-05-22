@@ -1,4 +1,4 @@
-## WSClient
+## wscl
 
 Simple browser WebSocket wrapper with some extra features:
 
@@ -7,8 +7,12 @@ Simple browser WebSocket wrapper with some extra features:
 
 ## How to use
 
+```bash
+yarn add wscl
+```
+
 ```js
-import WSClient, {WSEvents} from 'ws-client'
+import WSClient, {WSEvents} from 'wscl'
 
 async function test() {
   const ws = new WSClient({

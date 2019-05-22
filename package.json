@@ -1,7 +1,17 @@
 {
-  "name": "ws-client",
+  "name": "wscl",
+  "description": "Simple browser WebSocket wrapper with some extra features",
   "version": "1.0.0",
   "license": "WTFPL",
+  "author": "farwayer <farwayer@gmail.com>",
+  "repository": "farwayer/wcli",
+  "keywords": [
+    "websocket",
+    "socket",
+    "ws",
+    "wss",
+    "reconnect"
+  ],
   "scripts": {
     "prepack": "yarn cjs && yarn esm",
     "cjs": "babel --out-file index.cjs.js index.js",

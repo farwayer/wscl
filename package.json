@@ -1,12 +1,13 @@
 {
   "name": "wscl",
   "description": "Simple browser WebSocket wrapper with some extra features",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "WTFPL",
   "author": "farwayer <farwayer@gmail.com>",
-  "repository": "farwayer/wcli",
+  "repository": "farwayer/wscl",
   "keywords": [
     "websocket",
+    "websocket-client",
     "socket",
     "ws",
     "wss",

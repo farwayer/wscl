@@ -55,6 +55,7 @@ export default class WSClient extends NanoEvents {
     this.#ws.addEventListener(WSEvents.Open, this.#open)
     this.#ws.addEventListener(WSEvents.Close, this.#reconnect)
     this.#ws.addEventListener(WSEvents.Message, this.#msg)
+    this.#ws.addEventListener(WSEvents.Error, this.#error)
 
     return this.#ready
   }
@@ -99,5 +100,9 @@ export default class WSClient extends NanoEvents {
     if ((this.#reconnectWait *= 2) > this.#cfg.reconnectWaitMax) {
       this.#reconnectWait = this.#cfg.reconnectWaitMax
     }
+  }
+
+  #error = event => {
+    this.emit(WSEvents.Error, event)
   }
 }

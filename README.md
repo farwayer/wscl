@@ -1,5 +1,7 @@
 ## wscl
 
+[![NPM version](https://img.shields.io/npm/v/wscl.svg)](https://www.npmjs.com/package/wscl)
+
 Simple browser WebSocket wrapper with some extra features:
 
 - auto reconnect with x2 time strategy

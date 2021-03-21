@@ -1,4 +1,4 @@
-import NanoEvents from 'nanoevents'
+import {createNanoEvents} from 'nanoevents'
 
 
 export const WSEvents = {
@@ -14,11 +14,12 @@ const DefaultReconnectWait = {
   Max: 8000,
 }
 
-export default class WSClient extends NanoEvents {
+export default class WSClient {
   #ws
   #ready
   #readyResolve
   #connected = false
+  #emitter = createNanoEvents()
   #cfg = {
     url: undefined,
     protocols: undefined,
@@ -29,7 +30,6 @@ export default class WSClient extends NanoEvents {
   #reconnectWait
 
   constructor(cfg) {
-    super()
     Object.assign(this.#cfg, cfg)
 
     if (!this.#cfg.url) {
@@ -70,19 +70,23 @@ export default class WSClient extends NanoEvents {
     this.#ws.send(msg)
   }
 
+  on(event, cb) {
+    this.#emitter.on(event, cb)
+  }
+
 
   #readyInit = () => {
     this.#ready = new Promise(resolve => this.#readyResolve = resolve)
   }
 
   #msg = event => {
-    this.emit(WSEvents.Message, event.data)
+    this.#emitter.emit(WSEvents.Message, event.data)
   }
 
   #open = event => {
     this.#connected = true
     this.#reconnectWait = this.#cfg.reconnectWaitMin
-    this.emit(WSEvents.Open, event)
+    this.#emitter.emit(WSEvents.Open, event)
     this.#readyResolve()
   }
 
@@ -90,7 +94,7 @@ export default class WSClient extends NanoEvents {
     if (this.#connected) {
       this.#connected = false
       this.#readyInit()
-      this.emit(WSEvents.Close, event)
+      this.#emitter.emit(WSEvents.Close, event)
     }
 
     if (event.code === CloseCodeNormal) return
@@ -103,6 +107,6 @@ export default class WSClient extends NanoEvents {
   }
 
   #error = event => {
-    this.emit(WSEvents.Error, event)
+    this.#emitter.emit(WSEvents.Error, event)
   }
 }

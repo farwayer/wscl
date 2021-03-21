@@ -21,16 +21,14 @@
   "main": "index.cjs.js",
   "module": "index.esm.js",
   "dependencies": {
-    "@babel/runtime": "^7.6.3",
-    "nanoevents": "^2.0.0"
+    "@babel/runtime": "^7.13.10",
+    "nanoevents": "^5.1.13"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-private-methods": "^7.6.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
     "caniuse-api": "^3.0.0"
   }
 }

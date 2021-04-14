@@ -1,25 +1,18 @@
-const caniuse  = require('caniuse-api')
-
-
 const esm = !!process.env.ESM
-const wsSupport = Object.entries(caniuse.getSupport('websocket'))
-  .filter(([_, {y}]) => y)
-  .map(([name, {y}]) => `${name} >= ${y}`)
 
-module.exports = {
+export default {
   presets: [
     ['@babel/preset-env', {
-      targets: [
-        ...wsSupport,
-        'not dead',
-      ],
-      modules: esm ? false : undefined,
+      bugfixes: true,
       loose: true,
+      modules: esm ? false : undefined,
+      targets: [
+        // do not transform arrow functions
+        'chrome 47, edge 13, firefox 45, opera 34',
+      ],
     }],
   ],
   plugins: [
     ['@babel/plugin-proposal-class-properties', {loose: true}],
-    ['@babel/plugin-proposal-private-methods', {loose: true}],
-    ['@babel/plugin-transform-runtime', {useESModules: esm}],
   ],
 }

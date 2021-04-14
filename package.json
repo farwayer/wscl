@@ -1,10 +1,38 @@
 {
   "name": "wscl",
-  "description": "Simple browser WebSocket wrapper with some extra features",
   "version": "1.0.3",
   "license": "WTFPL",
-  "author": "farwayer <farwayer@gmail.com>",
+  "description": "Simple browser WebSocket wrapper with some extra features",
   "repository": "farwayer/wscl",
+  "author": "farwayer <farwayer@gmail.com>",
+  "scripts": {
+    "prepack": "yarn cjs && yarn esm && size-limit",
+    "cjs": "babel --out-file index.cjs.js index.js",
+    "esm": "cross-env ESM=1 babel --out-file index.esm.js index.js"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
+  "react-native": "index.js",
+  "exports": {
+    ".": {
+      "import": "index.esm.js",
+      "default": "index.cjs.js"
+    }
+  },
+  "dependencies": {
+    "nanoevents": "^5.1.13"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.15",
+    "@size-limit/preset-small-lib": "^4.10.2",
+    "cross-env": "^7.0.3",
+    "size-limit": "^4.10.2"
+  },
   "keywords": [
     "websocket",
     "websocket-client",
@@ -13,22 +41,11 @@
     "wss",
     "reconnect"
   ],
-  "scripts": {
-    "prepack": "yarn cjs && yarn esm",
-    "cjs": "babel --out-file index.cjs.js index.js",
-    "esm": "ESM=1 babel --out-file index.esm.js index.js"
-  },
-  "main": "index.cjs.js",
-  "module": "index.esm.js",
-  "dependencies": {
-    "@babel/runtime": "^7.13.10",
-    "nanoevents": "^5.1.13"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
-    "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/preset-env": "^7.13.10",
-    "caniuse-api": "^3.0.0"
-  }
+  "size-limit": [
+    {
+      "path": "index.esm.js",
+      "import": "{WSClient}",
+      "limit": "511 B"
+    }
+  ]
 }

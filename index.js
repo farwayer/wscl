@@ -14,99 +14,91 @@ const DefaultReconnectWait = {
   Max: 8000,
 }
 
-export default class WSClient {
-  #ws
-  #ready
-  #readyResolve
-  #connected = false
-  #emitter = createNanoEvents()
-  #cfg = {
+export class WSClient {
+  connected = false
+
+  _emitter = createNanoEvents()
+  _cfg = {
     url: undefined,
     protocols: undefined,
     reconnect: true,
     reconnectWaitMin: DefaultReconnectWait.Min,
     reconnectWaitMax: DefaultReconnectWait.Max,
   }
-  #reconnectWait
 
   constructor(cfg) {
-    Object.assign(this.#cfg, cfg)
+    Object.assign(this._cfg, cfg)
 
-    if (!this.#cfg.url) {
+    if (!this._cfg.url) {
       throw new Error("url required")
     }
 
-    this.#readyInit()
-    this.#reconnectWait = this.#cfg.reconnectWaitMin
-  }
-
-  get connected() {
-    return this.#connected
-  }
-
-  get ready() {
-    return this.#ready
+    this._readyInit()
+    this._reconnectWait = this._cfg.reconnectWaitMin
   }
 
   connect = () => {
-    if (this.#connected) return
+    if (this.connected) return
 
-    this.#ws = new WebSocket(this.#cfg.url, this.#cfg.protocols)
-    this.#ws.addEventListener(WSEvents.Open, this.#open)
-    this.#ws.addEventListener(WSEvents.Close, this.#reconnect)
-    this.#ws.addEventListener(WSEvents.Message, this.#msg)
-    this.#ws.addEventListener(WSEvents.Error, this.#error)
+    this._ws = new WebSocket(this._cfg.url, this._cfg.protocols)
+    this._ws.addEventListener(WSEvents.Open, this._open)
+    this._ws.addEventListener(WSEvents.Close, this._reconnect)
+    this._ws.addEventListener(WSEvents.Message, this._msg)
+    this._ws.addEventListener(WSEvents.Error, this._error)
 
-    return this.#ready
+    return this.ready
   }
 
   close(reason) {
-    if (!this.#connected) return
-    this.#ws.close(CloseCodeNormal, reason)
+    if (!this.connected) return
+    this._ws.close(CloseCodeNormal, reason)
   }
 
-  async send(msg) {
-    await this.#ready
-    this.#ws.send(msg)
+  send(msg) {
+    this.ready.then(() => {
+      this._ws.send(msg)
+    })
   }
 
   on(event, cb) {
-    this.#emitter.on(event, cb)
+    this._emitter.on(event, cb)
   }
 
 
-  #readyInit = () => {
-    this.#ready = new Promise(resolve => this.#readyResolve = resolve)
+  _readyInit = () => {
+    this.ready = new Promise(resolve => this._readyResolve = resolve)
   }
 
-  #msg = event => {
-    this.#emitter.emit(WSEvents.Message, event.data)
+  _msg = event => {
+    this._emitter.emit(WSEvents.Message, event.data)
   }
 
-  #open = event => {
-    this.#connected = true
-    this.#reconnectWait = this.#cfg.reconnectWaitMin
-    this.#emitter.emit(WSEvents.Open, event)
-    this.#readyResolve()
+  _open = event => {
+    this.connected = true
+    this._reconnectWait = this._cfg.reconnectWaitMin
+    this._emitter.emit(WSEvents.Open, event)
+    this._readyResolve()
   }
 
-  #reconnect = event => {
-    if (this.#connected) {
-      this.#connected = false
-      this.#readyInit()
-      this.#emitter.emit(WSEvents.Close, event)
+  _reconnect = event => {
+    if (this.connected) {
+      this.connected = false
+      this._readyInit()
+      this._emitter.emit(WSEvents.Close, event)
     }
 
     if (event.code === CloseCodeNormal) return
-    if (!this.#cfg.reconnect) return
+    if (!this._cfg.reconnect) return
 
-    setTimeout(this.connect, this.#reconnectWait)
-    if ((this.#reconnectWait *= 2) > this.#cfg.reconnectWaitMax) {
-      this.#reconnectWait = this.#cfg.reconnectWaitMax
+    setTimeout(this.connect, this._reconnectWait)
+    if ((this._reconnectWait *= 2) > this._cfg.reconnectWaitMax) {
+      this._reconnectWait = this._cfg.reconnectWaitMax
     }
   }
 
-  #error = event => {
-    this.#emitter.emit(WSEvents.Error, event)
+  _error = event => {
+    this._emitter.emit(WSEvents.Error, event)
   }
 }
+
+export default WSClient

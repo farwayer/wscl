@@ -1,4 +1,4 @@
 .idea/
+.yarn/
+.yarnrc.yml
 babel.config.js
-.npmignore
-yarn-error.log

@@ -8,7 +8,7 @@ Simple browser WebSocket wrapper with some extra features:
 - wait connection before sending message
 
 Lib is tiny. Its size [limited](https://github.com/ai/size-limit)
-to **511 bytes** (with all deps, minified and gzipped).
+to **627 bytes** (with all deps, minified and gzipped).
 
 ## How to use
 

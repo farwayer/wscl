@@ -17,8 +17,8 @@
   "react-native": "index.js",
   "exports": {
     ".": {
-      "import": "index.esm.js",
-      "default": "index.cjs.js"
+      "import": "./index.esm.js",
+      "default": "./index.cjs.js"
     }
   },
   "dependencies": {

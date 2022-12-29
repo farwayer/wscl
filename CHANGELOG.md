@@ -1,5 +1,9 @@
 ## Changelog
 
+### 1.2.2
+
+- fix WebSocket undefined on nodejs
+
 ### 1.2.1
 
 - fix build issue

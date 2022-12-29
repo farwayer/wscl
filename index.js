@@ -24,7 +24,7 @@ export class WSClient {
     reconnect: true,
     reconnectWaitMin: DefaultReconnectWait.Min,
     reconnectWaitMax: DefaultReconnectWait.Max,
-    WebSocket: WebSocket,
+    WebSocket,
   }
 
   constructor(cfg) {

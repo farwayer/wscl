@@ -45,7 +45,7 @@
     {
       "path": "index.esm.js",
       "import": "{WSClient}",
-      "limit": "627 B"
+      "limit": "632 B"
     }
   ]
 }

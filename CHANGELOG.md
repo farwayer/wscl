@@ -1,5 +1,9 @@
 ## Changelog
 
+### 1.2.1
+
+- fix build issue
+
 ### 1.2.0
 
 - add ability to use custom WebSocket (ws for nodejs for example)

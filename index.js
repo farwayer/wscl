@@ -24,6 +24,7 @@ export class WSClient {
     reconnect: true,
     reconnectWaitMin: DefaultReconnectWait.Min,
     reconnectWaitMax: DefaultReconnectWait.Max,
+    WebSocket: WebSocket,
   }
 
   constructor(cfg) {
@@ -40,7 +41,7 @@ export class WSClient {
   connect = () => {
     if (this.connected) return
 
-    this._ws = new WebSocket(this._cfg.url, this._cfg.protocols)
+    this._ws = new this._cfg.WebSocket(this._cfg.url, this._cfg.protocols)
     this._ws.addEventListener(WSEvents.Open, this._open)
     this._ws.addEventListener(WSEvents.Close, this._reconnect)
     this._ws.addEventListener(WSEvents.Message, this._msg)

@@ -20,7 +20,7 @@ export class Client {
     retryBackoffRate: DefaultRetryBackoffRate,
     retryWaitMax: DefaultRetryWaitMax,
     retryMax: DefaultRetryMax,
-    Websocket: globalThis?.WebSocket,
+    WebSocket: globalThis?.WebSocket,
   }
   #ws
   #retryNo = 0

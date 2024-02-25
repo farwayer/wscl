@@ -19,7 +19,7 @@ export type WSClientCfg = {
   WebSocket?: WebSocket
 }
 
-export interface WSocket {
+export interface WSClient {
   new(cfg: WSClientCfg)
 
   readonly connected: boolean

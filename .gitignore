@@ -4,5 +4,3 @@ node_modules/
 !.yarn/releases
 !.yarn/plugins
 .pnp.*
-index.cjs.js
-index.esm.js

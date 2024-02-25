@@ -2,13 +2,13 @@
 
 [![NPM version](https://img.shields.io/npm/v/wscl.svg)](https://www.npmjs.com/package/wscl)
 
-Simple browser WebSocket wrapper with some extra features:
+Simple WebSocket wrapper with some extra features:
 
-- auto reconnect with x2 time strategy
-- wait connection before sending message
+- auto reconnect with exponential backoff strategy
+- wait connection before sending messages
 
-Lib is tiny. Its size [limited](https://github.com/ai/size-limit)
-to **627 bytes** (with all deps, minified and gzipped).
+Lib is small. Its size [limited](https://github.com/ai/size-limit)
+to **624 bytes** (with all deps, minified and brotlied).
 
 ## How to use
 
@@ -17,36 +17,25 @@ yarn add wscl
 ```
 
 ```js
-import {WSClient, WSEvents} from 'wscl'
+import {WSClient, events} from 'wscl'
 
-async function test() {
-  const ws = new WSClient({
-    url: 'wss://echo.websocket.org',
-    reconnect: true,
-    reconnectWaitMin: 125,
-    reconnectWaitMax: 8000,
-  })
-  
-  ws.on(WSEvents.Open, console.log)
-  ws.on(WSEvents.Close, console.log)
-  ws.on(WSEvents.Message, console.log)
-  ws.on(WSEvents.Error, console.log)
+const wsc = new WSClient({
+url: 'wss://echo.websocket.org',
+})
 
-  // you can send message before connect
-  ws.send("message")
+wsc.on(events.Open, console.log)
+wsc.on(events.Close, console.log)
+wsc.on(events.Message, console.log)
+wsc.on(events.Error, console.log)
 
-  await ws.connect()
-  console.log(ws.connected)
-  
-  ws.close("reason")
-  
-  ws.connect()
-  await ws.ready
-}
+// you can send message before connect
+wsc.send("message")
+
+await wsc.connect()
+console.log(wsc.connected)
+
+wsc.close("reason")
+
+wsc.connect()
+await wsc.ready
 ```
-
-## IE and old browsers
-
-If you support IE and old browsers, you need to
-[transpile](https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/)
-`wscl` and `nanoevents` from node_modules.

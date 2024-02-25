@@ -1,5 +1,13 @@
 ## Changelog
 
+### 2.0.0
+
+- module only
+- do not transpile
+- use exponential backoff retry strategy (see new retry config options)
+- typings
+- WSEvents -> events
+
 ### 1.2.2
 
 - fix WebSocket undefined on nodejs

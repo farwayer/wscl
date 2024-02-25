@@ -1,37 +1,24 @@
 {
   "name": "wscl",
-  "version": "1.2.2",
+  "version": "2.0.0",
   "license": "WTFPL",
   "description": "Simple browser WebSocket wrapper with some extra features",
   "repository": "farwayer/wscl",
   "author": "farwayer <farwayer@gmail.com>",
-  "scripts": {
-    "prepack": "yarn cjs && yarn esm && size-limit",
-    "cjs": "babel --out-file index.cjs.js index.js",
-    "esm": "cross-env ESM=1 babel --out-file index.esm.js index.js"
-  },
-  "sideEffects": false,
   "type": "module",
-  "main": "index.cjs.js",
-  "module": "index.esm.js",
-  "react-native": "index.js",
   "exports": {
-    ".": {
-      "import": "./index.esm.js",
-      "default": "./index.cjs.js"
-    }
+    ".": "./index.js",
+    "./package.json": "./package.json"
   },
   "dependencies": {
-    "nanoevents": "^8.0.0"
+    "nanoevents": "^9.0.0"
+  },
+  "scripts": {
+    "prepack": "size-limit"
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.0",
-    "@babel/core": "^7.23.3",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/preset-env": "^7.23.3",
-    "@size-limit/preset-small-lib": "^11.0.0",
-    "cross-env": "^7.0.3",
-    "size-limit": "^11.0.0"
+    "@size-limit/preset-small-lib": "^11.0.2",
+    "size-limit": "^11.0.2"
   },
   "keywords": [
     "websocket",
@@ -43,10 +30,10 @@
   ],
   "size-limit": [
     {
-      "path": "index.esm.js",
+      "path": "index.js",
       "import": "{WSClient}",
-      "limit": "644 B"
+      "limit": "624 B"
     }
   ],
-  "packageManager": "yarn@4.0.1"
+  "packageManager": "yarn@4.1.0"
 }

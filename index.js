@@ -11,7 +11,7 @@ let DefaultRetryMax = Number.MAX_SAFE_INTEGER
 
 export {events}
 
-export class WSClient {
+export class Client {
   #connected = false
   #emitter = createNanoEvents()
   #cfg = {

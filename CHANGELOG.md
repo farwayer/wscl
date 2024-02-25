@@ -6,7 +6,7 @@
 - do not transpile
 - use exponential backoff retry strategy (see new retry config options)
 - typings
-- WSEvents -> events
+- WSEvents -> events, WSClient -> Client
 
 ### 1.2.2
 

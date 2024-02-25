@@ -8,7 +8,7 @@ export enum events {
   Error = 'error',
 }
 
-export type WSClientCfg = {
+export type ClientCfg = {
   url: string | URL
   protocols?: string | string[]
   reconnect?: boolean
@@ -19,8 +19,8 @@ export type WSClientCfg = {
   WebSocket?: WebSocket
 }
 
-export interface WSClient {
-  new(cfg: WSClientCfg)
+export interface Client {
+  new(cfg: ClientCfg)
 
   readonly connected: boolean
   readonly ready: Promise<void>

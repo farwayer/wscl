@@ -17,9 +17,9 @@ yarn add wscl
 ```
 
 ```js
-import {WSClient, events} from 'wscl'
+import {Client, events} from 'wscl'
 
-const wsc = new WSClient({
+const wsc = new Client({
   url: 'wss://echo.websocket.org',
 })
 

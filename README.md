@@ -20,7 +20,7 @@ yarn add wscl
 import {WSClient, events} from 'wscl'
 
 const wsc = new WSClient({
-url: 'wss://echo.websocket.org',
+  url: 'wss://echo.websocket.org',
 })
 
 wsc.on(events.Open, console.log)

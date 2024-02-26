@@ -23,7 +23,6 @@ export class Client {
   constructor(cfg: ClientCfg)
 
   readonly connected: boolean
-  readonly ready: Promise<void>
 
   connect(): Promise<this>
   close(reason?: string): void

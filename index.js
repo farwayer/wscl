@@ -31,10 +31,6 @@ export class Client {
     return this.#connected
   }
 
-  get ready() {
-    return this.#ready
-  }
-
   constructor(cfg) {
     Object.assign(this.#cfg, cfg)
 

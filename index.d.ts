@@ -19,8 +19,8 @@ export type ClientCfg = {
   WebSocket?: WebSocket
 }
 
-export interface Client {
-  new(cfg: ClientCfg)
+export class Client {
+  constructor(cfg: ClientCfg)
 
   readonly connected: boolean
   readonly ready: Promise<void>

@@ -8,11 +8,11 @@ Simple WebSocket wrapper with some extra features:
 - wait connection before sending messages
 
 Lib is small. Its size [limited](https://github.com/ai/size-limit)
-to **624 bytes** (with all deps, minified and brotlied).
+to **594 bytes** (with all deps, minified and brotlied).
 
 ## How to use
 
-```bash
+```shell
 yarn add wscl
 ```
 
@@ -25,8 +25,8 @@ const wsc = new Client({
 
 wsc.on(events.Open, console.log)
 wsc.on(events.Close, console.log)
-wsc.on(events.Message, console.log)
-wsc.on(events.Error, console.log)
+wsc.on(events.Message, console.log) // will be called with data not event
+wsc.on(events.Error, console.log) // will be called with error not event
 
 // you can send message before connect
 wsc.send("message")
@@ -35,7 +35,4 @@ await wsc.connect()
 console.log(wsc.connected)
 
 wsc.close("reason")
-
-wsc.connect()
-await wsc.ready
 ```

@@ -7,7 +7,7 @@
   "author": "farwayer <farwayer@gmail.com>",
   "type": "module",
   "exports": {
-    ".": "./index.js",
+    ".": "./src/index.js",
     "./package.json": "./package.json"
   },
   "dependencies": {
@@ -30,9 +30,9 @@
   ],
   "size-limit": [
     {
-      "path": "index.js",
+      "path": "src/index.js",
       "import": "{Client}",
-      "limit": "624 B"
+      "limit": "594 B"
     }
   ],
   "packageManager": "yarn@4.1.0"

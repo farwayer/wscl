@@ -32,7 +32,7 @@
     {
       "path": "src/index.js",
       "import": "{Client}",
-      "limit": "594 B"
+      "limit": "608 B"
     }
   ],
   "packageManager": "yarn@4.1.0"

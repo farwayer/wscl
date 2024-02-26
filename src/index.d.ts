@@ -24,7 +24,7 @@ export class Client {
 
   readonly connected: boolean
 
-  connect(): Promise<this>
+  connect(init: (ws: WebSocket) => void): Promise<this>
   close(reason?: string): void
   send(data: string | ArrayBufferLike | Blob | ArrayBufferView): Promise<void>
   on(event: events): Unsubscribe

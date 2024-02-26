@@ -1,6 +1,6 @@
 {
   "name": "wscl",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "license": "WTFPL",
   "description": "Simple browser WebSocket wrapper with some extra features",
   "repository": "farwayer/wscl",

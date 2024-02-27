@@ -8,7 +8,7 @@ declare namespace events {
   export const Error: 'error'
 }
 
-export type ClientCfg = {
+export type Config = {
   url: string | URL
   protocols?: string | string[]
   reconnect?: boolean
@@ -20,7 +20,7 @@ export type ClientCfg = {
 }
 
 export class Client {
-  constructor(cfg: ClientCfg)
+  constructor(cfg: Config)
 
   readonly connected: boolean
   readonly ready: Promise<this>

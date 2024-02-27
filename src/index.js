@@ -40,17 +40,17 @@ export class Client {
   }
 
   connect = async (init) => {
-    if (this.connected) {
+    if (this.#connected) {
       return this
     }
 
     this.#ws = new this.#cfg.WebSocket(this.#cfg.url, this.#cfg.protocols)
     init?.(this.#ws)
 
-    this.#ws.addEventListener(events.Open, this.#open)
-    this.#ws.addEventListener(events.Close, this.#close)
-    this.#ws.addEventListener(events.Message, this.#msg)
-    this.#ws.addEventListener(events.Error, this.#error)
+    this.#ws.open = this.#open
+    this.#ws.close = this.#close
+    this.#ws.message = this.#msg
+    this.#ws.error = this.#error
 
     return this.#ready
   }

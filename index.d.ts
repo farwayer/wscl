@@ -1,11 +1,11 @@
 import {Unsubscribe} from 'nanoevents'
 
 
-export enum events {
-  Open = 'open',
-  Close = 'close',
-  Message = 'message',
-  Error = 'error',
+declare namespace events {
+  export const Open: 'open'
+  export const Close: 'close'
+  export const Message: 'message'
+  export const Error: 'error'
 }
 
 export type ClientCfg = {
@@ -28,5 +28,5 @@ export class Client {
   connect(init: (ws: WebSocket) => void): Promise<this>
   close(reason?: string): void
   send(data: string | ArrayBufferLike | Blob | ArrayBufferView): Promise<void>
-  on(event: events): Unsubscribe
+  on(event: typeof events): Unsubscribe
 }

@@ -23,6 +23,7 @@ export class Client {
   constructor(cfg: ClientCfg)
 
   readonly connected: boolean
+  readonly ready: Promise<this>
 
   connect(init: (ws: WebSocket) => void): Promise<this>
   close(reason?: string): void

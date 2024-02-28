@@ -47,10 +47,10 @@ export class Client {
     this.#ws = new this.#cfg.WebSocket(this.#cfg.url, this.#cfg.protocols)
     init?.(this.#ws)
 
-    this.#ws.open = this.#open
-    this.#ws.close = this.#close
-    this.#ws.message = this.#msg
-    this.#ws.error = this.#error
+    this.#ws.onopen = this.#open
+    this.#ws.onclose = this.#close
+    this.#ws.onmessage = this.#msg
+    this.#ws.onerror = this.#error
 
     return this.#ready
   }

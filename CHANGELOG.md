@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.0.12
+
+- can close connection even in connecting state
+
 ### 2.0.0
 
 - module only

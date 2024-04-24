@@ -428,6 +428,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clean-publish@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "clean-publish@npm:4.4.0"
+  dependencies:
+    cross-spawn: "npm:^7.0.3"
+    fast-glob: "npm:^3.3.2"
+    lilconfig: "npm:^3.1.1"
+    micromatch: "npm:^4.0.5"
+  bin:
+    clean-publish: clean-publish.js
+    clear-package-json: clear-package-json.js
+  checksum: 10c0/05f17aec3f109a50f27c5446811cf01498d3b88db2149101528fc9df4f53e79ec6e5b4922802eea4800892f83316b7e4aa90ae977260398b092a3896d8c1f4f6
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -451,7 +466,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^7.0.0":
+"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
   dependencies:
@@ -933,7 +948,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromatch@npm:^4.0.4":
+"micromatch@npm:^4.0.4, micromatch@npm:^4.0.5":
   version: 4.0.5
   resolution: "micromatch@npm:4.0.5"
   dependencies:
@@ -1471,6 +1486,7 @@ __metadata:
   resolution: "wscl@workspace:."
   dependencies:
     "@size-limit/preset-small-lib": "npm:^11.1.2"
+    clean-publish: "npm:^4.4.0"
     nanoevents: "npm:^9.0.0"
     size-limit: "npm:^11.1.2"
   languageName: unknown

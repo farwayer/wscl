@@ -17,8 +17,8 @@
     "prepack": "size-limit"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^11.0.2",
-    "size-limit": "^11.0.2"
+    "@size-limit/preset-small-lib": "^11.1.2",
+    "size-limit": "^11.1.2"
   },
   "keywords": [
     "websocket",
@@ -35,5 +35,5 @@
       "limit": "608 B"
     }
   ],
-  "packageManager": "yarn@4.1.0"
+  "packageManager": "yarn@4.1.1"
 }

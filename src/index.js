@@ -56,11 +56,7 @@ export class Client {
   }
 
   close(reason) {
-    if (!this.#connected) {
-      return
-    }
-
-    this.#ws.close(CloseCodeNormal, reason)
+    this.#ws?.close(CloseCodeNormal, reason)
   }
 
   async send(msg) {

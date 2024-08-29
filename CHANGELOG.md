@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.1.1
+
+- typing: connect init argument is optional
+
 ### 2.1.0
 
 - url can be function

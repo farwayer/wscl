@@ -1,5 +1,11 @@
 ## Changelog
 
+### 2.1.3
+
+- event as error handler argument
+- typing: on()
+
+
 ### 2.1.2
 
 - typing: url getter can be async

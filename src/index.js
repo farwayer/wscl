@@ -44,7 +44,9 @@ export class Client {
       return this
     }
 
-    this.#ws = new this.#cfg.WebSocket(this.#cfg.url, this.#cfg.protocols)
+    let url = await getUrl(this.#cfg.url)
+
+    this.#ws = new this.#cfg.WebSocket(url, this.#cfg.protocols)
     init?.(this.#ws)
 
     this.#ws.onopen = this.#open
@@ -115,3 +117,6 @@ export class Client {
   #error = event =>
     this.#emitter.emit(events.Error, event.error)
 }
+
+let getUrl = async url =>
+  typeof url === 'function' ? url() : url

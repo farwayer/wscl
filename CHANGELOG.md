@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.1.2
+
+- typing: url getter can be async
+
 ### 2.1.1
 
 - typing: connect init argument is optional

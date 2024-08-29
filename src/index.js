@@ -115,7 +115,7 @@ export class Client {
     this.#emitter.emit(events.Message, event.data)
 
   #error = event =>
-    this.#emitter.emit(events.Error, event.error)
+    this.#emitter.emit(events.Error, event)
 }
 
 let getUrl = async url =>

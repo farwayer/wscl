@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.1.0
+
+- url can be function
+
 ### 2.0.12
 
 - can close connection even in connecting state

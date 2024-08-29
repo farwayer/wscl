@@ -9,7 +9,7 @@ declare namespace events {
 }
 
 export type Config = {
-  url: string | URL | (() => string)
+  url: string | URL | (() => Promise<string>)
   protocols?: string | string[]
   reconnect?: boolean
   retryBackoffInterval?: number

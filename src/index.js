@@ -1,7 +1,6 @@
 import {createNanoEvents} from 'nanoevents'
 import * as events from './events.js'
 
-
 let CloseCodeNormal = 1000
 
 export {events}
@@ -21,6 +20,7 @@ export class Client {
   #retryNo = 0
   #ready
   #readyResolve
+	#init
 
   get connected() {
     return this.#connected
@@ -40,21 +40,9 @@ export class Client {
   }
 
   connect = async (init) => {
-    if (this.#connected) {
-      return this
-    }
-
-    let url = await getUrl(this.#cfg.url)
-
-    this.#ws = new this.#cfg.WebSocket(url, this.#cfg.protocols)
-    init?.(this.#ws)
-
-    this.#ws.onopen = this.#open
-    this.#ws.onclose = this.#close
-    this.#ws.onmessage = this.#msg
-    this.#ws.onerror = this.#error
-
-    return this.#ready
+		this.#init = init
+	  await this.#connect()
+	  return this
   }
 
   close(reason) {
@@ -69,6 +57,24 @@ export class Client {
   on(event, cb) {
     return this.#emitter.on(event, cb)
   }
+
+	#connect = async () => {
+		if (this.#connected) {
+			return
+		}
+
+		let url = await getUrl(this.#cfg.url)
+
+		this.#ws = new this.#cfg.WebSocket(url, this.#cfg.protocols)
+		await this.#init?.(this.#ws)
+
+		this.#ws.onopen = this.#open
+		this.#ws.onclose = this.#close
+		this.#ws.onmessage = this.#msg
+		this.#ws.onerror = this.#error
+
+		await this.#ready
+	}
 
   #open = event => {
     this.#connected = true
@@ -97,7 +103,7 @@ export class Client {
     }
 
     let wait = this.#retryWait()
-    setTimeout(this.connect, wait)
+    setTimeout(this.#connect, wait)
   }
 
   #retryWait() {

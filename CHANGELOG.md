@@ -1,5 +1,10 @@
 ## Changelog
 
+### 2.2.0
+
+- ws init can be async
+- fix init was not called after reconnection
+
 ### 2.1.3
 
 - event as error handler argument

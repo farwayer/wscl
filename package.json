@@ -1,6 +1,6 @@
 {
   "name": "wscl",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "license": "WTFPL",
   "description": "Simple browser WebSocket wrapper with some extra features",
   "repository": "github:farwayer/wscl",
@@ -34,7 +34,7 @@
     {
       "path": "src/index.js",
       "import": "{Client}",
-      "limit": "621 B"
+      "limit": "644 B"
     }
   ],
   "clean-publish": {

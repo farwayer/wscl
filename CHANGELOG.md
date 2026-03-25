@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.3.1
+
+- add types to package.json
+
 ### 2.3.0
 
 - prevent edge case when send can fail if instant disconnect after open

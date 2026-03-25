@@ -1,7 +1,7 @@
 import {Unsubscribe} from 'nanoevents'
 
 
-declare namespace events {
+export declare namespace events {
   export const Open: 'open'
   export const Close: 'close'
   export const Message: 'message'
@@ -9,14 +9,14 @@ declare namespace events {
 }
 
 export type Config = {
-  url: string | URL | (() => Promise<string>)
+  url: string | URL | (() => string | Promise<string>)
   protocols?: string | string[]
   reconnect?: boolean
   retryBackoffInterval?: number
   retryBackoffRate?: number
   retryWaitMax?: number
   retryMax?: number
-  WebSocket?: WebSocket
+  WebSocket?: { new(url: string | URL, protocols?: string | string[]): WebSocket }
 }
 
 type OpenCb = (e: Event) => void
@@ -24,7 +24,7 @@ type CloseCb = (e: CloseEvent) => void
 type MessageCb<T> = (data: T) => void
 type ErrorCb = (e: Event) => void
 
-export class Client<MSG> {
+export class Client<MSG = any> {
   constructor(cfg: Config)
 
   readonly connected: boolean

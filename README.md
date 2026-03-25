@@ -6,6 +6,8 @@ Simple WebSocket wrapper with some extra features:
 
 - auto reconnect with exponential backoff strategy
 - wait connection before sending messages
+- on() returns unsubscribe function
+- on('message') & on('error') callback called with data and error (not event) 
 
 Lib is tiny. Its size [limited](https://github.com/ai/size-limit)
 to **635 bytes** (with all deps, minified and brotlied).

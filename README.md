@@ -7,8 +7,8 @@ Simple WebSocket wrapper with some extra features:
 - auto reconnect with exponential backoff strategy
 - wait connection before sending messages
 
-Lib is small. Its size [limited](https://github.com/ai/size-limit)
-to **644 bytes** (with all deps, minified and brotlied).
+Lib is tiny. Its size [limited](https://github.com/ai/size-limit)
+to **635 bytes** (with all deps, minified and brotlied).
 
 ## How to use
 

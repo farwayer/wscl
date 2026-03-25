@@ -34,7 +34,7 @@
     {
       "path": "src/index.js",
       "import": "{Client}",
-      "limit": "644 B"
+      "limit": "635 B"
     }
   ],
   "clean-publish": {

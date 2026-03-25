@@ -6,8 +6,8 @@ Simple WebSocket wrapper with some extra features:
 
 - auto reconnect with exponential backoff strategy
 - wait connection before sending messages
-- on() returns unsubscribe function
-- on('message') & on('error') callback called with data and error (not event) 
+- `on()` returns unsubscribe function
+- `on('message')` callback called with data (not event) 
 
 Lib is tiny. Its size [limited](https://github.com/ai/size-limit)
 to **635 bytes** (with all deps, minified and brotlied).
@@ -28,7 +28,7 @@ const wsc = new Client({
 wsc.on(events.Open, console.log)
 wsc.on(events.Close, console.log)
 wsc.on(events.Message, console.log) // will be called with data not event
-wsc.on(events.Error, console.log) // will be called with error not event
+wsc.on(events.Error, console.log)
 
 // you can send message before connect
 wsc.send("message")

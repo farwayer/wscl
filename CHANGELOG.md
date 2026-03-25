@@ -1,5 +1,12 @@
 ## Changelog
 
+### 2.3.0
+
+- prevent edge case when send can fail if instant disconnect after open
+- do not await init, because ws can connect during the call
+- reduce size to 635 bytes
+- typing improvements
+
 ### 2.2.0
 
 - ws init can be async

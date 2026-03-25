@@ -66,7 +66,7 @@ export class Client {
 		let url = await getUrl(this.#cfg.url)
 
 		this.#ws = new this.#cfg.WebSocket(url, this.#cfg.protocols)
-		await this.#init?.(this.#ws)
+		this.#init?.(this.#ws)
 
 		this.#ws.onopen = this.#open
 		this.#ws.onclose = this.#close

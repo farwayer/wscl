@@ -50,7 +50,9 @@ export class Client {
   }
 
   async send(msg) {
-    await this.#ready
+		while (!this.#connected) {
+			await this.#ready
+		}
     this.#ws.send(msg)
   }
 
@@ -84,7 +86,7 @@ export class Client {
   }
 
   #close = event => {
-    if (this.connected) {
+    if (this.#connected) {
       this.#connected = false
       this.#readyInit()
       this.#emitter.emit(events.Close, event)

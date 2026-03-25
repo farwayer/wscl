@@ -30,7 +30,7 @@ export class Client<MSG = any> {
   readonly connected: boolean
   readonly ready: Promise<this>
 
-  connect(init?: (ws: WebSocket) => void): Promise<this>
+  connect(init?: (ws: WebSocket) => any): Promise<this>
   close(reason?: string): void
   send(data: string | ArrayBufferLike | Blob | ArrayBufferView): Promise<void>
   on(event: typeof events.Open, cb: OpenCb): Unsubscribe

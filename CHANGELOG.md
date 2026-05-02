@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.3.2
+
+- fix connect override
+
 ### 2.3.1
 
 - add types to package.json

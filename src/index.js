@@ -39,7 +39,7 @@ export class Client {
     this.#readyInit()
   }
 
-  connect = async (init) => {
+	async connect(init) {
 		this.#init = init
 	  await this.#connect()
 	  return this
